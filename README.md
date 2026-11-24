@@ -42,13 +42,12 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 ## 3. Configure the database connection
 
-Copy `.env.example` to `.env`, then edit `.env` and replace `YOUR_PASSWORD` with your PostgreSQL password.
-
-Do not share or commit your `.env` file.
+If `.env` does not exist, copy `.env.example` to `.env`; otherwise add the example's authentication settings to your existing `.env` and keep its PostgreSQL `DATABASE_URL`. Replace every example value: use a unique `APP_USERNAME`, a strong `APP_PASSWORD` (at least 14 characters), and a random `APP_SESSION_SECRET` (at least 32 characters). Use `COOKIE_SECURE=false` only for local HTTP development; use `true` behind HTTPS. Do not share or commit your `.env` file.
 
 ## 4. Start the API
 
 ```powershell
+python download_model.py
 python -m uvicorn main:app --reload
 ```
 
@@ -59,6 +58,10 @@ Open these addresses in your browser:
 - `http://127.0.0.1:8000/docs`
 
 The home page links to pickup and return inspections. Completing the return review automatically opens `/reports/{rental_id}` with the final comparison report and inspection frames.
+
+Users must sign in before accessing the application. GitHub Pages cannot host the FastAPI backend or connect directly to a private local PostgreSQL database; the backend must run on a reachable server or on the PC with a secure internet access path.
+
+For internet use from a home PC, keep PostgreSQL bound to localhost and put the app behind an HTTPS reverse proxy with a valid domain/certificate. Do not expose the database port or serve the app over plain HTTP. GitHub Pages may host static files only; this project is served by FastAPI.
 
 ## Inspection workflow
 

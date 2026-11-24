@@ -128,6 +128,23 @@ a.action-card:focus-visible {
   color: #991b1b;
 }
 
+.logout-form {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.logout-form button {
+  border: 1px solid #ccd4e1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: white;
+  color: #172033;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 @media (max-width: 650px) {
   .landing {
     padding: 48px 0;

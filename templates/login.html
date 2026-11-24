@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · Rental Car Inspection</title>
+  <link rel="stylesheet" href="/style/login.css">
+</head>
+<body>
+  <main class="login-card">
+    <p class="eyebrow">RENTAL CAR INSPECTION</p>
+    <h1>Sign in</h1>
+    <p class="intro">Sign in to access pickup, return, and inspection reports.</p>
+    <p class="login-error" role="alert">__LOGIN_ERROR__</p>
+    <form method="post" action="/auth/login">
+      <input type="hidden" name="next" value="__NEXT_PATH__">
+      <label>Username
+        <input name="username" autocomplete="username" required>
+      </label>
+      <label>Password
+        <input name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button type="submit">Sign in</button>
+    </form>
+  </main>
+</body>
+</html>
