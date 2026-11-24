@@ -42,12 +42,13 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 ## 3. Configure the database connection
 
-If `.env` does not exist, copy `.env.example` to `.env`; otherwise add the example's authentication settings to your existing `.env` and keep its PostgreSQL `DATABASE_URL`. Replace every example value: use a unique `APP_USERNAME`, a strong `APP_PASSWORD` (at least 14 characters), and a random `APP_SESSION_SECRET` (at least 32 characters). Use `COOKIE_SECURE=false` only for local HTTP development; use `true` behind HTTPS. Do not share or commit your `.env` file.
+Copy `.env.example` to `.env`, then edit `.env` and replace `YOUR_PASSWORD` with your PostgreSQL password.
+
+Do not share or commit your `.env` file.
 
 ## 4. Start the API
 
 ```powershell
-python download_model.py
 python -m uvicorn main:app --reload
 ```
 
@@ -58,16 +59,6 @@ Open these addresses in your browser:
 - `http://127.0.0.1:8000/docs`
 
 The home page links to pickup and return inspections. Completing the return review automatically opens `/reports/{rental_id}` with the final comparison report and inspection frames.
-
-Users must sign in before accessing the application. GitHub Pages cannot host the FastAPI backend or connect directly to a private local PostgreSQL database; the backend must run on a reachable server or on the PC with a secure internet access path.
-
-For internet use from a home PC without a domain or router port forwarding, Tailscale Funnel is one option. Install and sign in to Tailscale on the PC, enable MagicDNS/HTTPS and Funnel for the device, then:
-
-1. Set `COOKIE_SECURE=true` in the local `.env` and configure the required login credentials and session secret. Never commit `.env`.
-2. Start the app locally: `python -m uvicorn main:app --host 127.0.0.1 --port 8000`.
-3. In a second PowerShell window, run `tailscale funnel 8000`. Share the resulting HTTPS URL with the friend; share the app login separately and privately.
-
-The PC and both commands must remain running. Funnel makes the URL publicly reachable, so keep app login enabled. Keep PostgreSQL bound to localhost and never expose its port. GitHub Pages cannot host the FastAPI backend. See the [Tailscale Funnel documentation](https://tailscale.com/docs/features/tailscale-funnel) for account and device requirements.
 
 ## Inspection workflow
 
