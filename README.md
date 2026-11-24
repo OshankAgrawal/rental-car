@@ -61,7 +61,13 @@ The home page links to pickup and return inspections. Completing the return revi
 
 Users must sign in before accessing the application. GitHub Pages cannot host the FastAPI backend or connect directly to a private local PostgreSQL database; the backend must run on a reachable server or on the PC with a secure internet access path.
 
-For internet use from a home PC, keep PostgreSQL bound to localhost and put the app behind an HTTPS reverse proxy with a valid domain/certificate. Do not expose the database port or serve the app over plain HTTP. GitHub Pages may host static files only; this project is served by FastAPI.
+For internet use from a home PC without a domain or router port forwarding, Tailscale Funnel is one option. Install and sign in to Tailscale on the PC, enable MagicDNS/HTTPS and Funnel for the device, then:
+
+1. Set `COOKIE_SECURE=true` in the local `.env` and configure the required login credentials and session secret. Never commit `.env`.
+2. Start the app locally: `python -m uvicorn main:app --host 127.0.0.1 --port 8000`.
+3. In a second PowerShell window, run `tailscale funnel 8000`. Share the resulting HTTPS URL with the friend; share the app login separately and privately.
+
+The PC and both commands must remain running. Funnel makes the URL publicly reachable, so keep app login enabled. Keep PostgreSQL bound to localhost and never expose its port. GitHub Pages cannot host the FastAPI backend. See the [Tailscale Funnel documentation](https://tailscale.com/docs/features/tailscale-funnel) for account and device requirements.
 
 ## Inspection workflow
 
