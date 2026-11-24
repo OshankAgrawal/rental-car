@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Final Inspection Report</title>
+  <link rel="stylesheet" href="/style/report.css">
+</head>
+<body>
+  <main class="report-shell" data-rental-id="__RENTAL_ID__" data-report-type="__REPORT_TYPE__">
+    <a class="back-link" href="/">← Back to home</a>
+    <header class="report-header">
+      <p class="eyebrow">RENTAL CAR INSPECTION</p>
+      <h1>Final inspection report</h1>
+      <p id="rental-heading">Loading report…</p>
+    </header>
+    <p id="report-error" class="error" role="alert" hidden></p>
+    <div id="report-content" hidden>
+      <section class="report-section">
+        <h2>1. Rental Information</h2>
+        <dl id="rental-information" class="details-grid"></dl>
+      </section>
+      <section class="report-section">
+        <h2>2. Rental Duration and Charges</h2>
+        <dl id="rental-charges" class="details-grid"></dl>
+        <div id="damage-charge-items"></div>
+      </section>
+      <section class="report-section">
+        <h2>3. Vehicle Damage Comparison</h2>
+        <div id="damage-comparison" class="comparison-grid"></div>
+      </section>
+      <section class="report-section">
+        <h2>4. Final Inspection Summary</h2>
+        <div id="inspection-summary" class="comparison-grid"></div>
+        <h3>Final damage summary</h3>
+        <dl id="damage-summary" class="details-grid"></dl>
+      </section>
+    </div>
+  </main>
+  <script src="/style/report.js"></script>
+</body>
+</html>

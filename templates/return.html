@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Return Inspection</title>
+  <link rel="stylesheet" href="/style/pickup.css">
+</head>
+<body>
+  <main>
+    <a class="home-link" href="/">← Home</a>
+    <section class="card">
+      <h1>Return Inspection</h1>
+      <p class="subtitle">Upload the return video. If new or worsened damage is detected, review each frame and enter its charge.</p>
+      <div id="message" role="alert"></div>
+      <form id="return-form">
+        <label>Rental ID
+          <input name="rental_id" required maxlength="80" placeholder="RNT-1001">
+        </label>
+        <label>Return video
+          <input name="video" type="file" accept="video/mp4,video/quicktime,video/x-msvideo,video/x-matroska,video/webm" required>
+        </label>
+        <button type="submit">Upload Return Video</button>
+      </form>
+      <div class="progress-area">
+        <progress id="progress-bar" max="100" value="0"></progress>
+        <p id="progress-message">Waiting for return video</p>
+      </div>
+      <section id="damage-review" hidden>
+        <p id="damage-progress" class="subtitle"></p>
+        <div id="damage-frames" class="damage-frames"></div>
+        <h2 id="damage-title"></h2>
+        <p id="damage-reason"></p>
+        <label>Damage charge (INR)
+          <input id="damage-amount" type="number" min="0" step="0.01" required>
+        </label>
+        <button id="next-damage" type="button">Save charge and continue</button>
+      </section>
+      <section id="return-report" hidden>
+        <h2>Final inspection report</h2>
+        <iframe class="inline-report" title="Final comparison report"></iframe>
+      </section>
+    </section>
+  </main>
+  <script src="/style/inspection-progress.js"></script>
+  <script src="/style/return.js"></script>
+</body>
+</html>

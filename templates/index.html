@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rental Car Inspection</title>
+  <link rel="stylesheet" href="/style/landing.css">
+</head>
+<body>
+  <main class="landing">
+    <header class="hero">
+      <p class="eyebrow">RENTAL CAR OPERATIONS</p>
+      <h1>Vehicle inspections, made clearer.</h1>
+      <p>Record the vehicle condition at pickup and return, then review one final comparison report.</p>
+    </header>
+    <section class="actions" aria-label="Inspection actions">
+      <a class="action-card" href="/pickup">
+        <span class="step">01</span>
+        <h2>Pickup inspection</h2>
+        <p>Start a rental and upload the vehicle's pickup video.</p>
+        <span class="action-link">Start pickup inspection <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="action-card" href="/return">
+        <span class="step">02</span>
+        <h2>Return inspection</h2>
+        <p>Upload the return video, review damage frames, and enter any damage charges.</p>
+        <span class="action-link">Start return inspection <span aria-hidden="true">→</span></span>
+      </a>
+      <form class="action-card report-lookup" action="/reports" method="get">
+        <span class="step">03</span>
+        <h2>View a report</h2>
+        <p>Find a saved pickup, return, or full comparison report.</p>
+        <label for="report-rental-id">Rental ID</label>
+        <input id="report-rental-id" name="rental_id" required maxlength="80" placeholder="RNT-1001">
+        <label for="report-type">Report type</label>
+        <select id="report-type" name="report_type">
+          <option value="pickup_inspection">Pickup inspection</option>
+          <option value="return_inspection">Return inspection</option>
+          <option value="final_comparison">Full comparison</option>
+        </select>
+        <button type="submit" class="action-link">View report <span aria-hidden="true">→</span></button>
+        <span id="lookup-error" class="lookup-error" role="alert"></span>
+      </form>
+    </section>
+  </main>
+  <script src="/style/landing.js"></script>
+</body>
+</html>

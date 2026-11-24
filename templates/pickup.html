@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pickup Inspection</title>
+  <link rel="stylesheet" href="/style/pickup.css">
+</head>
+<body>
+  <main>
+    <a class="home-link" href="/">← Home</a>
+    <section class="card">
+      <h1>Pickup Inspection</h1>
+      <p class="subtitle">Create or update the rental, then upload the pickup video.</p>
+      <div id="message" role="alert"></div>
+      <form id="pickup-form">
+        <div class="grid">
+          <label>Rental ID
+            <input name="rental_id" required maxlength="80" placeholder="RNT-1001">
+          </label>
+          <label>Vehicle registration
+            <input name="vehicle_registration" required maxlength="30" placeholder="KA01AB1234">
+          </label>
+        </div>
+        <div class="grid">
+          <label>Customer name
+            <input name="customer_name" required maxlength="120" placeholder="Customer name">
+          </label>
+          <label>Customer phone
+            <input name="customer_phone" required maxlength="30" placeholder="+91 98765 43210">
+          </label>
+        </div>
+        <label>Pickup video
+          <input name="video" type="file" accept="video/mp4,video/quicktime,video/x-msvideo,video/x-matroska,video/webm" required>
+        </label>
+        <button type="submit">Upload Pickup Video</button>
+      </form>
+      <div class="progress-area">
+        <progress id="progress-bar" max="100" value="0"></progress>
+        <p id="progress-message">Waiting for pickup video</p>
+      </div>
+      <section id="pickup-report" hidden>
+        <h2>Pickup analysis report</h2>
+        <iframe class="inline-report" title="Pickup inspection report"></iframe>
+      </section>
+    </section>
+  </main>
+  <script src="/style/inspection-progress.js"></script>
+  <script src="/style/pickup.js"></script>
+</body>
+</html>
